@@ -27,3 +27,5 @@ https://console.cloud.google.com/apis/credentials?project=restaurant-revie-15234
 https://developers.google.com/maps/documentation/javascript/markers
 
 https://www.materialui.co/unicode-characters
+
+https://stackoverflow.com/a/13835543 by: Stefan.

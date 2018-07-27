@@ -42,8 +42,8 @@ function ViewModel() {
         marker_clicked(markers.filter(marker => marker.getTitle() === location.title)[0]);
     };
 }
-
-ko.applyBindings(new ViewModel);
+const vm = new ViewModel;
+ko.applyBindings(vm);
 
 window.gm_authFailure = () => { alert("Problem with the map");};
 
@@ -51,9 +51,12 @@ const marker_clicked = function(marker) {
     if (marker.getAnimation() !== null) {
         marker.setAnimation(null);
         info_window.close();
+        vm.locations().filter( location => location.title === marker.getTitle())[0].clicked(false);
     } else {
         stop_animations();
         marker.setAnimation(google.maps.Animation.BOUNCE);
+        vm.locations().forEach( location => location.clicked(false));
+        vm.locations().filter( location => location.title === marker.getTitle())[0].clicked(true);
         info_window.open(map, marker);
     }
 };
