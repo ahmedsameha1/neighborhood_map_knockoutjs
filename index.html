@@ -9,9 +9,9 @@
     <body>
         <div class="container">
             <div class="side_bar">
-                <input placeholder="Filter">
+                <input placeholder="Filter" data-bind="event: {input: input_changed}">
                 <div class="locataions" data-bind="foreach: locations">
-                    <div class="location" data-bind="text: title, click: $parent.location_clicked, css: {clicked}">
+                    <div class="location" data-bind="text: title, click: $parent.location_clicked, css: {clicked}, visible: visible">
                     </div>
                 </div>
             </div>

@@ -22,12 +22,12 @@ const locations = [
     clicked: ko.observable(false),
 },
 {
-    title: "Apple",
+    title: "Facebook",
     coords: {
-        /* lat and lng are copied from: https://en.wikipedia.org/wiki/Apple_Inc. because I have to get a location to show a marker on the map.
-         * https://en.wikipedia.org/wiki/Apple_Inc. is copied from Google Chrome browser to make attribution of the copied lat and lng */
-        lng: -122.03118,
-        lat: 37.33182,
+        /* lat and lng are copied from: https://en.wikipedia.org/wiki/Facebook because I have to get a location to show a marker on the map.
+         * https://en.wikipedia.org/wiki/Facebook is copied from Google Chrome browser to make attribution of the copied lat and lng */
+        lng: -122.1484,
+        lat: 37.4848,
     },
     visible: ko.observable(true),
     clicked: ko.observable(false),
@@ -58,10 +58,10 @@ const locations = [
 
 const init = {
     center: {
-        /* lat and lng are copied from: https://en.wikipedia.org/wiki/Apple_Inc. because I have to get a location to set the center of the map.
-         * https://en.wikipedia.org/wiki/Apple_Inc. is copied from Google Chrome browser to make attribution of the copied lat and lng */
-        lng: -122.03118,
-        lat: 37.33182,
+         /* lat and lng are copied from: https://en.wikipedia.org/wiki/Googleplex because I have to get a location to set the center of the map.
+         * https://en.wikipedia.org/wiki/Googleplex is copied from Google Chrome browser to make attribution of the copied lat and lng */
+        lng: -122.084,
+        lat: 37.422,
     },
     zoom: 10,
 };
