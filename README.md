@@ -8,6 +8,8 @@ Mediawiki
 
 ATTRIBUTIONS
 ============
+I used Vim and Visual Studio Code.
+
 All web search have been done using the search feature of Google Chrome browser which uses Google search engine.
 
 The following is copied from Google Chrome browser to attribute content in the project or to cite resources:
@@ -37,3 +39,5 @@ https://stackoverflow.com/a/13835543 by: Stefan.
 https://en.wikipedia.org/wiki/Special:ApiSandbox#action=query&format=json&list=geosearch&gscoord=37.786952%7C-122.399523&gsradius=10000&gslimit=10
 
 https://www.mediawiki.org/wiki/API:Showing_nearby_wiki_information
+
+https://stackoverflow.com/a/37972510 by: Stickers.
