@@ -51,13 +51,33 @@ header {
 i {
     font-size: 2.5rem;
     margin: 0 2vw 0 2vw;
+    user-select: none;
 }
 
 header h1 {
     display: flex;
     flex: 1;
-    justify-content: center;
-    align-items: center;
-    font-size: 3vw;
     word-wrap: normal;
+    font-size: 3vw;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+@media screen and ( max-width: 600px ) {
+    .side_bar {
+        width: 25%;
+    }
+}
+
+@media screen and ( max-width: 450px ) {
+    .side_bar {
+        width: 35%;
+    }
+}
+
+@media screen and ( max-width: 300px ) {
+    .side_bar {
+        width: 50%;
+    }
 }

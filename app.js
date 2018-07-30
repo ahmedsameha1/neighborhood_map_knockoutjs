@@ -15,6 +15,7 @@ function initMap() {
 }
 
 function ViewModel() {
+    this.side_bar_shown = ko.observable(true);
     this.locations = ko.observableArray(locations);
     this.input_changed = function(vm, event) {
         const value = event.target.value;
@@ -41,6 +42,9 @@ function ViewModel() {
             }
         });
         marker_clicked(markers.filter(marker => marker.getTitle() === location.title)[0]);
+    };
+    this.toggle_side_bar = function() {
+        this.side_bar_shown(!this.side_bar_shown());
     };
 }
 const vm = new ViewModel;
@@ -99,6 +103,6 @@ locations.forEach(location => {
     })
     .catch(error => {
         console.log(error);
-        location.data = null; 
+        location.data = null;
     });
 });

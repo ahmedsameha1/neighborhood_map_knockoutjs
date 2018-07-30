@@ -8,7 +8,9 @@ Mediawiki
 
 ATTRIBUTIONS
 ============
-I used Vim and Visual Studio Code.
+I used Vim to edit files.
+
+I used Visual Studio Code and its Intellisense feature to edit files.
 
 All web search have been done using the search feature of Google Chrome browser which uses Google search engine.
 
