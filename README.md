@@ -1,10 +1,14 @@
 DEPENDENCIES
 ============
-Knockoutjs framework
+All web search have been done using the search feature of Google Chrome browser which uses Google search engine.
 
-Google Maps javascript API
+The following is copied from Google Chrome browser to cite dependencies:
 
-Mediawiki
+http://knockoutjs.com/
+
+https://cloud.google.com/maps-platform/
+
+https://www.mediawiki.org/wiki/API:Showing_nearby_wiki_information
 
 ATTRIBUTIONS
 ============

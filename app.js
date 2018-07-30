@@ -47,6 +47,7 @@ function ViewModel() {
         this.side_bar_shown(!this.side_bar_shown());
     };
 }
+
 const vm = new ViewModel;
 ko.applyBindings(vm);
 
