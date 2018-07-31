@@ -1,6 +1,7 @@
 let map,
 markers,
-info_window;
+info_window,
+map_loaded = false;
 
 function initMap() {
     map = new google.maps.Map(document.getElementById("map"), init)
@@ -12,36 +13,45 @@ function initMap() {
     }));
     markers.forEach( marker => { marker.addListener("click", () => { marker_clicked(marker);});});
     info_window = new google.maps.InfoWindow();
+    map_loaded = true;
 }
 
 function ViewModel() {
     this.side_bar_shown = ko.observable(true);
     this.locations = ko.observableArray(locations);
     this.input_changed = function(vm, event) {
-        const value = event.target.value;
-        if ( value ) {
-            markers.forEach(marker => {marker.setVisible(false);});
-            locations.forEach(location => {location.visible(false); location.clicked(false);});
-            info_window.close();
-            locs = locations.filter(location => location.title.toLowerCase().indexOf(value.toLowerCase()) === 0);
-            if (locs[0]) {
-                locs[0].visible(true);
-                markers.filter(marker => marker.getTitle() === locs[0].title)[0].setVisible(true);
+        if ( map_loaded ) {
+            const value = event.target.value;
+            if ( value ) {
+                markers.forEach(marker => {marker.setVisible(false);});
+                locations.forEach(location => {location.visible(false); location.clicked(false);});
+                info_window.close();
+                locs = locations.filter(location => location.title.toLowerCase().indexOf(value.toLowerCase()) === 0);
+                if (locs[0]) {
+                    locs[0].visible(true);
+                    markers.filter(marker => marker.getTitle() === locs[0].title)[0].setVisible(true);
+                }
+            } else {
+                markers.forEach(marker => {marker.setVisible(true);});
+                locations.forEach(location => {location.visible(true);});
             }
         } else {
-            markers.forEach(marker => {marker.setVisible(true);});
-            locations.forEach(location => {location.visible(true);});
+            alert("Error with the map");
         }
     };
     this.location_clicked = function(location) {
-        locations.forEach(loc => {
-            if ( loc !== location ) {
-                loc.clicked(false);
-            } else {
-                loc.clicked(!loc.clicked());
-            }
-        });
-        marker_clicked(markers.filter(marker => marker.getTitle() === location.title)[0]);
+        if (map_loaded) {
+            locations.forEach(loc => {
+                if ( loc !== location ) {
+                    loc.clicked(false);
+                } else {
+                    loc.clicked(!loc.clicked());
+                }
+            });
+            marker_clicked(markers.filter(marker => marker.getTitle() === location.title)[0]);
+        } else {
+            alert("Error with the map");
+        }
     };
     this.toggle_side_bar = function() {
         this.side_bar_shown(!this.side_bar_shown());
@@ -51,7 +61,10 @@ function ViewModel() {
 const vm = new ViewModel;
 ko.applyBindings(vm);
 
-window.gm_authFailure = () => { alert("Problem with the map");};
+window.gm_authFailure = () => {
+    map_loaded = false;
+    alert("Problem with the map");
+};
 
 const marker_clicked = function(marker) {
     if (marker.getAnimation() !== null) {
@@ -85,8 +98,8 @@ const stop_animations = function() {
 };
 
 const compose_url = function(coords) {
-    // /w/api.php?action=query&format=json&list=geosearch&gscoord=37.786952%7C-122.399523&gsradius=10000&gslimit=10 is copied from https://en.wikipedia.org/wiki/Special:ApiSandbox#action=query&format=json&list=geosearch&gscoord=37.786952%7C-122.399523&gsradius=10000&gslimit=10 I copied it because I think that I don't need to write it myself.
-    // https://en.wikipedia.org/wiki/Special:ApiSandbox#action=query&format=json&list=geosearch&gscoord=37.786952%7C-122.399523&gsradius=10000&gslimit=10 is copied from Google Chrome browser because I need to attribute a content.
+    // "/w/api.php?action=query&format=json&list=geosearch&gscoord=37.786952%7C-122.399523&gsradius=10000&gslimit=10" is copied from https://en.wikipedia.org/wiki/Special:ApiSandbox#action=query&format=json&list=geosearch&gscoord=37.786952%7C-122.399523&gsradius=10000&gslimit=10 I copied it because I think that I don't need to write it myself.
+    // "https://en.wikipedia.org/wiki/Special:ApiSandbox#action=query&format=json&list=geosearch&gscoord=37.786952%7C-122.399523&gsradius=10000&gslimit=10" is copied from Google Chrome browser because I need to attribute a content.
     return `https://en.wikipedia.org/w/api.php?action=query&format=json&list=geosearch&gscoord=${coords.lat}%7C${coords.lng}&gslimit=1&origin=*`;
 }
 
