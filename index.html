@@ -8,7 +8,7 @@
     </head>
     <body>
         <div class="container">
-            <div class="side_bar" data-bind="visible: side_bar_shown">
+            <div class="side_bar" data-bind="css: {side_bar_hidden}">
                 <input placeholder="Filter" data-bind="event: {input: input_changed}">
                 <div class="locataions" data-bind="foreach: locations">
                     <div class="location" data-bind="text: title, click: $parent.location_clicked, css: {clicked}, visible: visible">

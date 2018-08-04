@@ -17,7 +17,7 @@ function initMap() {
 }
 
 function ViewModel() {
-    this.side_bar_shown = ko.observable(true);
+    this.side_bar_hidden = ko.observable(false);
     this.locations = ko.observableArray(locations);
     this.input_changed = function(vm, event) {
         if ( map_loaded ) {
@@ -66,7 +66,8 @@ function ViewModel() {
         }
     };
     this.toggle_side_bar = function() {
-        this.side_bar_shown(!this.side_bar_shown());
+        console.log("e");
+        this.side_bar_hidden(!this.side_bar_hidden());
     };
 }
 

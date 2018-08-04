@@ -25,7 +25,13 @@ html, body, .container {
 
 .side_bar {
     background-color: gray;
+    overflow: hidden;
     width: 20%;
+    transition: width 0.3s;
+}
+
+.side_bar_hidden {
+    width: 0!important;
 }
 
 input {
